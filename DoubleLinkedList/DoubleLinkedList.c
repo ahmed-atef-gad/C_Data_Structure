@@ -239,12 +239,16 @@ ListStatus_t DeletetNode(struct node *List)
     listLength = GetLength(List);
     if((nodePosition > listLength) || (nodePosition <= 1) || (nodePosition == listLength))
     {
-        if(nodePosition == 1){
+        if(nodePosition == 1)
+        {
             printf("Please use the Delete_Node_At_Beginning !! \n");
-        }else if(nodePosition == listLength){
+        }
+        else if(nodePosition == listLength)
+        {
             printf("Please use the Delete_Node_At_End !! \n");
         }
-        else{
+        else
+        {
             printf("Invalid Node Position -> List has ( %i ) Nodes \n", listLength);
         }
     }

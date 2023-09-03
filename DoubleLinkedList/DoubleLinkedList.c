@@ -237,7 +237,7 @@ ListStatus_t DeletetNode(struct node *List)
     printf("Enter Node Position (First node is position = 1): ");
     scanf("%i", &nodePosition);
     listLength = GetLength(List);
-    if((nodePosition > listLength) || (nodePosition <= 1) || (nodePosition == listLength))
+    if((nodePosition >= listLength) || (nodePosition <= 1))
     {
         if(nodePosition == 1)
         {

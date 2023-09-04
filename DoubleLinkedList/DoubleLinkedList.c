@@ -189,24 +189,32 @@ ListStatus_t DeleteNodeAtBeginning(struct node **List)
     }
     else
     {
-        *List = (*List)->RightLink;
-        (*List)->LeftLink = NULL;
-        free(tempNode);
-        tempNode = NULL;
-        ret_status = R_OK;
+        if(listLength == 1)
+        {
+            DestroyList(List);
+            ret_status = R_DESTROYED;
+        }
+        else
+        {
+            *List = (*List)->RightLink;
+            (*List)->LeftLink = NULL;
+            free(tempNode);
+            tempNode = NULL;
+            ret_status = R_OK;
+        }
     }
 
     return ret_status;
 }
 
-ListStatus_t DeleteNodeAtEnd(struct node *List)
+ListStatus_t DeleteNodeAtEnd(struct node **List)
 {
     ListStatus_t ret_status = R_NOK;
-    struct node *NodeListCounterOne = List;
+    struct node *NodeListCounterOne = *List;
     struct node *NodeListCounterTwo = NULL;
     unsigned int listLength = 0;
 
-    listLength = GetLength(List);
+    listLength = GetLength(*List);
     if(listLength == 0)
     {
         printf("List is Empty , nothing to be deleted !! \n");
@@ -214,15 +222,23 @@ ListStatus_t DeleteNodeAtEnd(struct node *List)
     }
     else
     {
-        while(NodeListCounterOne->RightLink != NULL)
+        if(listLength == 1)
         {
-            NodeListCounterOne = NodeListCounterOne->RightLink;
+            DestroyList(List);
+            ret_status = R_DESTROYED;
         }
-        NodeListCounterTwo = NodeListCounterOne->LeftLink;
-        NodeListCounterTwo->RightLink = NULL;
-        free(NodeListCounterOne);
-        NodeListCounterOne = NULL;
-        ret_status = R_OK;
+        else
+        {
+            while(NodeListCounterOne->RightLink != NULL)
+            {
+                NodeListCounterOne = NodeListCounterOne->RightLink;
+            }
+            NodeListCounterTwo = NodeListCounterOne->LeftLink;
+            NodeListCounterTwo->RightLink = NULL;
+            free(NodeListCounterOne);
+            NodeListCounterOne = NULL;
+            ret_status = R_OK;
+        }
     }
     return ret_status;
 }

@@ -25,7 +25,7 @@ ListStatus_t InsertNodeAtEnd(struct node **List);
 ListStatus_t InsertNodeAfter(struct node *List);
 ListStatus_t InsertNodeBefore(struct node **List);
 ListStatus_t DeleteNodeAtBeginning(struct node **List);
-ListStatus_t DeleteNodeAtEnd(struct node *List);
+ListStatus_t DeleteNodeAtEnd(struct node **List);
 ListStatus_t DeletetNode(struct node *List);
 ListStatus_t DisplayListForward(struct node *List);
 ListStatus_t DisplayListReverse(struct node *List);

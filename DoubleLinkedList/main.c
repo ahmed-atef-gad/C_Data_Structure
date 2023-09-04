@@ -50,7 +50,7 @@ int main()
                 DeleteNodeAtBeginning(&ListHead);
             break;
             case 6:
-                DeleteNodeAtEnd(ListHead);
+                DeleteNodeAtEnd(&ListHead);
             break;
             case 7:
                 DeletetNode(ListHead);
